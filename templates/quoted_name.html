@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <table class="table table-hover">
+        <thead>
+            <th>Meal</th>
+            <th>Category</th>
+            <th>Ingredients</th>
+            <th>Instructions</th>
+            <th style="white-space:nowrap">Step by step</th>
+        </thead>
+        <tbody>  
+            
+            <tr>
+                <td class="text-left" style="white-space:nowrap" >{{meal['name']}}</td>
+                <td>{{meal['category']}}</td>
+                
+                <td>
+                    {% for ingredient in ingredients %} 
+                    {{ingredient}}
+                    {% endfor %}
+                </td>
+                
+                <td class="text-justify">{{meal['instructions']}}</td>
+                <td>
+                    <a href="{{meal['video']}}" target="_blank">
+                        Go to YouTube!
+                    </a>
+                </td>
+            </tr>    
+        </tbody>
+        
+    </table>
+    <div>
+        <img class="border w-50 h-30 rounded-circle img-responsive float-left" src="{{meal['img']}}">
+        <form action="/favorites" method="POST">
+            <input type="hidden"  name="fav_meal" value="{{meal['name']}}">
+            <input type="hidden"  name="fav_category" value="{{meal['category']}}">
+            <input type="hidden" name="fav_img" value="{{meal['img']}}">
+            <button class="btn btn-outline-danger float-right btn-lg" type="submit">Add to favorites!</button>
+        </form>
+        
+    </div>     
+{% endblock %}

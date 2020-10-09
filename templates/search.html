@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <form action="/search" method="post">
+        <div class="form-group">
+            <select class="form-control" name="category">
+                <option disabled selected value="">Search by category</option>
+                <option>Beef</option>
+                <option>Breakfast</option>
+                <option>Chicken</option>
+                <option>Dessert</option>
+                <option>Goat</option>
+                <option>Lamb</option>
+                <option>Miscellaneous</option>
+                <option>Pasta</option>
+                <option>Pork</option>
+                <option>Seafood</option>
+                <option>Side</option>
+                <option>Starter</option>
+                <option>Vegan</option>
+                <option>Vegetarian</option>     
+            </select>
+        </div>
+        <!--div class="form-group">
+            <input class="form-control" name="name" placeholder="By name e.g. 'Pancakes'" type="text">
+        </div-->
+        <div class="form-group">
+            <input class="form-control" name="key_word" placeholder="By key word e.g. 'beef'" type="text">
+        </div>
+        <button class="btn btn-outline-danger" type="submit">Look up!</button>
+    </form>
+{% endblock %}

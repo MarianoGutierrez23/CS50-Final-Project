@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <h4>Results for: "{{key_word}}"</h4>
+    <table class="table table-hover">
+        <thead>
+            <th>Meal</th>
+            <th>Category</th>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for meal in meals %}
+            <tr>
+                <td>{{meal['name']}}</td>
+                <td>{{meal['category']}}</td>
+                <td>
+                    <form action="/search" method="post">
+                        <input type="hidden"  name="name" value="{{meal['name']}}">
+                        <input type="image" class="border w-25 h-30 img-responsive rounded-circle" src="{{meal['img']}}" alt="Submit Form" />
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>        
+    </table>     
+{% endblock %}
